@@ -8,9 +8,9 @@ from numpy.random.bit_generator import (  # type: ignore[attr-defined]
 
 import aesara.tensor.random.basic as aer
 from aesara.link.jax.dispatch.basic import jax_funcify, jax_typify
+from aesara.link.jax.dispatch.binomial import binomial_sampling
 from aesara.link.jax.dispatch.shape import JAXShapeTuple
 from aesara.tensor.shape import Shape, Shape_i
-from aesara.link.jax.dispatch.binomial import binomial_sampling
 
 
 numpy_bit_gens = {"MT19937": 0, "PCG64": 1, "Philox": 2, "SFC64": 3}
@@ -347,6 +347,7 @@ def jax_sample_fn_lognormal(op):
         return (rng, sample_exp)
 
     return sample_fn
+
 
 @jax_sample_fn.register(aer.BinomialRV)
 def jax_sample_fn_binomial(op):

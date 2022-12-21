@@ -322,12 +322,12 @@ def test_random_updates(rng_ctor):
                 set_test_value(
                     at.dscalar(),
                     np.array(1000.0, dtype=np.float64),
-                )
+                ),
             ],
             (2,),
             "binomial",
             lambda *args: args,
-        )
+        ),
     ],
 )
 def test_random_RandomVariable(rv_op, dist_params, base_size, cdf_name, params_conv):
