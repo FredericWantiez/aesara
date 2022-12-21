@@ -316,12 +316,12 @@ def test_random_updates(rng_ctor):
             aer.binomial,
             [
                 set_test_value(
-                    at.dvector(),
-                    np.array([-1.0, 2.0], dtype=np.float64),
+                    at.dscalar(),
+                    np.array(10, dtype=np.int64),
                 ),
                 set_test_value(
-                    at.dscalar(),
-                    np.array(1000.0, dtype=np.float64),
+                    at.dvector(),
+                    np.array([.3, .6], dtype=np.float64),
                 ),
             ],
             (2,),
