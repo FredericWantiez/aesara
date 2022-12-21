@@ -10,6 +10,7 @@ import aesara.tensor.random.basic as aer
 from aesara.link.jax.dispatch.basic import jax_funcify, jax_typify
 from aesara.link.jax.dispatch.shape import JAXShapeTuple
 from aesara.tensor.shape import Shape, Shape_i
+from aesara.link.jax.dispatch.binomial import binomial_sampling
 
 
 numpy_bit_gens = {"MT19937": 0, "PCG64": 1, "Philox": 2, "SFC64": 3}

@@ -5,13 +5,13 @@ from collections import namedtuple
 
 # Container for static/pre-computed parameters
 BTRDParams = namedtuple(
-    'BTRDParams', 
+    'BTRDParams',
     ['a', 'b', 'c', 'spq', 'vr', 'ur', 'm', 'logp', 'log1p', 'alpha']
 )
 
 
 def binv(key, n, p):
-    """ Binomial Inversion Sampling 
+    """ Binomial Inversion Sampling
 
     Used when sequential search is fairly fast n * p < 10
 
@@ -129,7 +129,7 @@ def btrd(key, n, p):
         u2, v2, nkey = lax.cond(
             v >= params.vr,
             left_branch,
-            right_branch, 
+            right_branch,
             (0.5, v, vkey)
         )
         k2 = jnp.floor(G(u2))
@@ -144,8 +144,8 @@ def btrd(key, n, p):
     def cond_fun(val):
         k, key, u, v = val
         incorrect = (k < 0) | (k > n) # Early rejection since it's invalid
-        early = (jnp.abs(u) <= params.ur) & (v <= params.vr) # Early 
-        # Acceptance ratio 
+        early = (jnp.abs(u) <= params.ur) & (v <= params.vr) # Early
+        # Acceptance ratio
         m = params.m
         logp = params.logp
         log1mp = params.log1p
@@ -154,7 +154,7 @@ def btrd(key, n, p):
             (m + 0.5) * (jnp.log((m + 1)/(n - m + 1)) + log1mp - logp)
             + (n + 1) * jnp.log((n - m + 1.0)/(n - k + 1.0))
             + (k + 0.5) * (jnp.log((n - k + 1.0)/(k + 1.0)) + logp - log1mp)
-            + fc(m) 
+            + fc(m)
             + fc(n - m)
             - fc(k)
             - fc(n - k)
@@ -185,16 +185,10 @@ def binomial(key, n, p):
     return jnp.where(~flip, k, n - k)
 
 
-def binomial_sampling(key, n, p, shape=None, dtype=None):
-    shape = shape or lax.broadcast_shapes(jnp.shape(n), jnp.shape(p))
+def binomial_sampling(key, n, p, size=None, dtype=None):
+    shape = size or lax.broadcast_shapes(jnp.shape(n), jnp.shape(p))
     n = jnp.reshape(jnp.broadcast_to(n, shape), -1)
     p = jnp.reshape(jnp.broadcast_to(p, shape), -1)
     key = random.split(key, jnp.size(p))
     ret = lax.map(lambda x: binomial(*x), (key, n, p))
     return jnp.reshape(ret, shape)
-
-if __name__ == '__main__':
-    n = 5
-    p = jnp.array([.3, .9, 0.])
-    key = random.PRNGKey(1)
-    samples = binomial_sampling(key, n, p, shape=(10, 3))
