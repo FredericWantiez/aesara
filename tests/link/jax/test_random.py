@@ -312,6 +312,22 @@ def test_random_updates(rng_ctor):
             "halfcauchy",
             lambda *args: args,
         ),
+        (
+            aer.binomial,
+            [
+                set_test_value(
+                    at.dscalar(),
+                    np.array(20_000, dtype=np.int64),
+                ),
+                set_test_value(
+                    at.dvector(),
+                    np.array([0.33], dtype=np.float64),
+                ),
+            ],
+            (2,),
+            "binom",
+            lambda *args: args,
+        ),
     ],
 )
 def test_random_RandomVariable(rv_op, dist_params, base_size, cdf_name, params_conv):

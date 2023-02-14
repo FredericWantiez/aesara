@@ -8,6 +8,7 @@ from numpy.random.bit_generator import (  # type: ignore[attr-defined]
 
 import aesara.tensor.random.basic as aer
 from aesara.link.jax.dispatch.basic import jax_funcify, jax_typify
+from aesara.link.jax.dispatch.binomial import binomial_sampling
 from aesara.link.jax.dispatch.shape import JAXShapeTuple
 from aesara.tensor.shape import Shape, Shape_i
 
@@ -344,5 +345,20 @@ def jax_sample_fn_lognormal(op):
         sample_exp = jax.numpy.exp(sample)
         rng["jax_state"] = rng_key
         return (rng, sample_exp)
+
+    return sample_fn
+
+
+@jax_sample_fn.register(aer.BinomialRV)
+def jax_sample_fn_binomial(op):
+    """JAX Implementation of `BinomialRV`"""
+
+    def sample_fn(rng, size, dtype, *parameters):
+        rng_key = rng["jax_state"]
+        rng_key, sampling_key = jax.random.split(rng_key, 2)
+        n, p = parameters
+        sample = binomial_sampling(sampling_key, n, p, size=size, dtype=dtype)
+        rng["jax_state"] = rng_key
+        return (rng, sample)
 
     return sample_fn
