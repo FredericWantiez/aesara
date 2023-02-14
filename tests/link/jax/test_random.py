@@ -317,15 +317,15 @@ def test_random_updates(rng_ctor):
             [
                 set_test_value(
                     at.dscalar(),
-                    np.array(10, dtype=np.int64),
+                    np.array(20_000, dtype=np.int64),
                 ),
                 set_test_value(
                     at.dvector(),
-                    np.array([.3, .6], dtype=np.float64),
+                    np.array([0.33], dtype=np.float64),
                 ),
             ],
             (2,),
-            "binomial",
+            "binom",
             lambda *args: args,
         ),
     ],
