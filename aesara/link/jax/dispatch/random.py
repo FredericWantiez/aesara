@@ -406,3 +406,32 @@ def jax_sample_fn_geometric(op):
         return (rng, sample_ceil)
 
     return sample_fn
+
+
+@jax_sample_fn.register(aer.GenGammaRV)
+def jax_sample_fn_gengamma(op):
+    r"""Provide a JAX implementation of `GenGammaRV`
+
+    Samples are obtained from inverse sampling using the following:
+
+    .. math::
+        F^{-1}(q; a, d, p) = a \cdot [G^{-1}(q)]^{1/p}
+
+    G is the cdf of a Gamma distribution with $\alpha = d/p$ and $\beta = 1$
+
+    Note: Here we use the parametrization: $\alpha = d/p$
+    """
+
+    def sample_fn(rng, size, dtype, *parameters):
+        rng_key = rng["jax_state"]
+        rng_key, sampling_key = jax.random.split(rng_key, 2)
+
+        alpha, lam, p = parameters
+        d = alpha / p
+        samples = jax.random.gamma(sampling_key, d, size, dtype)
+        samples = lam * samples ** (1.0 / p)
+
+        rng["rng_state"] = rng_key
+        return (rng, samples)
+
+    return sample_fn

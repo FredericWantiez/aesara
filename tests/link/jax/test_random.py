@@ -443,6 +443,28 @@ def test_random_categorical():
     np.testing.assert_allclose(samples.mean(axis=0), 6 / 4, 1)
 
 
+@pytest.mark.parametrize(
+    "parameters",
+    [
+        np.array([1.0, 1.0, 1.0]),
+        np.array([1.0, 0.5, 2.0]),
+    ],
+)
+def test_random_gengamma(parameters):
+    alpha, lam, p = parameters
+    n_samples = 20_000
+    rng_state = np.random.RandomState(123)
+    rng = shared(rng_state)
+    g = at.random.gengamma(*parameters, size=(n_samples,), rng=rng)
+    g_fn = function([], g, mode=jax_mode)
+    samples = g_fn()
+    ref = stats.gengamma(alpha / p, p, scale=lam)
+    ref.random_state = rng_state
+    samples_ref = ref.rvs(n_samples)
+    test = stats.cramervonmises_2samp(samples, samples_ref)
+    assert test.pvalue > 0.1
+
+
 def test_random_permutation():
     array = np.arange(4)
     rng = shared(np.random.RandomState(123))
