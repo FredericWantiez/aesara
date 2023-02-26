@@ -324,6 +324,26 @@ def test_random_updates(rng_ctor):
             "invgauss",
             lambda *args: args,
         ),
+        (
+            aer.gengamma,
+            [
+                set_test_value(
+                    at.dvector(),
+                    np.array([1.0, 4.0], dtype=np.float64),
+                ),
+                set_test_value(
+                    at.dvector(),
+                    np.array([1.0, 2.0], dtype=np.float64),
+                ),
+                set_test_value(
+                    at.dvector(),
+                    np.array([2.0, 4.0], dtype=np.float64),
+                ),
+            ],
+            (2,),
+            "gengamma",
+            lambda alpha, d, p: (alpha / p, p, 0, d)
+        ),
     ],
 )
 def test_random_RandomVariable(rv_op, dist_params, base_size, cdf_name, params_conv):
