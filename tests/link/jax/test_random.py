@@ -2,11 +2,11 @@ import re
 
 import numpy as np
 import pytest
-import scipy.stats as stats
 
 import aesara
 import aesara.tensor as at
 import aesara.tensor.random as aer
+import scipy.stats as stats
 from aesara.compile.function import function
 from aesara.compile.sharedvalue import SharedVariable, shared
 from aesara.graph.basic import Constant
@@ -342,7 +342,7 @@ def test_random_updates(rng_ctor):
             ],
             (2,),
             "gengamma",
-            lambda alpha, d, p: (alpha / p, p, 0, d)
+            lambda alpha, d, p: (alpha / p, p, 0, d),
         ),
     ],
 )
@@ -461,28 +461,6 @@ def test_random_categorical():
     g_fn = function([], g, mode=jax_mode)
     samples = g_fn()
     np.testing.assert_allclose(samples.mean(axis=0), 6 / 4, 1)
-
-
-@pytest.mark.parametrize(
-    "parameters",
-    [
-        np.array([1.0, 1.0, 1.0]),
-        np.array([1.0, 0.5, 2.0]),
-    ],
-)
-def test_random_gengamma(parameters):
-    alpha, lam, p = parameters
-    n_samples = 20_000
-    rng_state = np.random.RandomState(123)
-    rng = shared(rng_state)
-    g = at.random.gengamma(*parameters, size=(n_samples,), rng=rng)
-    g_fn = function([], g, mode=jax_mode)
-    samples = g_fn()
-    ref = stats.gengamma(alpha / p, p, scale=lam)
-    ref.random_state = rng_state
-    samples_ref = ref.rvs(n_samples)
-    test = stats.cramervonmises_2samp(samples, samples_ref)
-    assert test.pvalue > 0.1
 
 
 def test_random_permutation():
