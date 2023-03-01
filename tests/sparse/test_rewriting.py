@@ -1,8 +1,8 @@
 import numpy as np
 import pytest
-import scipy as sp
 
 import aesara
+import scipy as sp
 from aesara import sparse
 from aesara.compile.mode import Mode, get_default_mode
 from aesara.configdefaults import config

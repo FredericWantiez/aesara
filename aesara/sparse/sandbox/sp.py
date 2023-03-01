@@ -9,7 +9,6 @@ U{http://www-users.cs.umn.edu/~saad/software/SPARSKIT/paper.ps}.
 # COPIED FROM hpu/icml09/sp.py
 
 import numpy as np
-from scipy import sparse as scipy_sparse
 
 import aesara
 import aesara.sparse
@@ -20,6 +19,7 @@ from aesara.tensor.math import dot
 from aesara.tensor.math import max as at_max
 from aesara.tensor.shape import reshape
 from aesara.tensor.subtensor import DimShuffle
+from scipy import sparse as scipy_sparse
 
 
 def register_specialize(lopt, *tags, **kwargs):

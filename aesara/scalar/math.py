@@ -9,9 +9,9 @@ import warnings
 from textwrap import dedent
 
 import numpy as np
+
 import scipy.special
 import scipy.stats
-
 from aesara.configdefaults import config
 from aesara.gradient import grad_not_implemented
 from aesara.scalar.basic import (

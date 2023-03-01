@@ -11,7 +11,6 @@ from aesara.tensor.type import TensorType
 
 try:
     import scipy.sparse
-
     from aesara.sparse.basic import SparseTensorType
 
     def _is_sparse(a):

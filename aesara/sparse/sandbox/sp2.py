@@ -1,7 +1,7 @@
 import numpy as np
-import scipy.sparse
 
 import aesara
+import scipy.sparse
 from aesara import tensor as at
 from aesara.graph.basic import Apply
 from aesara.graph.op import Op

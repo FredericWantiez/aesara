@@ -2,8 +2,8 @@ import warnings
 from textwrap import dedent
 
 import numpy as np
-import scipy
 
+import scipy
 from aesara.graph.basic import Apply
 from aesara.link.c.op import COp
 from aesara.tensor.basic import as_tensor_variable

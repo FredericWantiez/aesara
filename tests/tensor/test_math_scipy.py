@@ -10,7 +10,6 @@ from functools import partial
 
 import scipy.special
 import scipy.stats
-
 from aesara import function
 from aesara import tensor as at
 from aesara.compile.mode import get_default_mode

@@ -1,7 +1,7 @@
 import numpy as np
-import scipy as sp
 
 import aesara
+import scipy as sp
 from aesara.sparse.sharedvar import SparseTensorSharedVariable
 
 

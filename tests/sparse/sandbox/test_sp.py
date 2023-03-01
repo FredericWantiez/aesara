@@ -6,11 +6,11 @@ import pytest
 pytest.importorskip("scipy", minversion="0.7.0")
 
 import numpy as np
-from scipy.signal import convolve2d
 
 from aesara import function
 from aesara.sparse.sandbox import sp
 from aesara.tensor.type import dmatrix, dvector
+from scipy.signal import convolve2d
 from tests import unittest_tools as utt
 
 
