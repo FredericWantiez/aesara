@@ -1,6 +1,6 @@
 import pytest
-import scipy as sp
 
+import scipy as sp
 from aesara.sparse import matrix as sp_matrix
 from aesara.sparse.type import SparseTensorType
 from aesara.tensor import dmatrix

@@ -1,10 +1,10 @@
 from typing import Iterable, Optional, Union
 
 import numpy as np
-import scipy.sparse
 from typing_extensions import Literal
 
 import aesara
+import scipy.sparse
 from aesara import scalar as aes
 from aesara.graph.basic import Variable
 from aesara.graph.type import HasDataType

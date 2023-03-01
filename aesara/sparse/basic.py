@@ -10,10 +10,10 @@ TODO: Automatic methods for determining best sparse format?
 from warnings import warn
 
 import numpy as np
-import scipy.sparse
 from numpy.lib.stride_tricks import as_strided
 
 import aesara
+import scipy.sparse
 from aesara import _as_symbolic, as_symbolic
 from aesara import scalar as aes
 from aesara.configdefaults import config

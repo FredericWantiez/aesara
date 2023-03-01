@@ -1,6 +1,4 @@
 import numpy as np
-import scipy as sp
-import scipy.sparse
 from numba.core import cgutils, types
 from numba.core.imputils import impl_ret_borrowed
 from numba.extending import (
@@ -18,6 +16,8 @@ from numba.extending import (
 )
 from numba.np.numpy_support import from_dtype
 
+import scipy as sp
+import scipy.sparse
 from aesara.link.numba.dispatch.basic import get_numba_type
 from aesara.sparse.type import SparseTensorType
 
