@@ -361,6 +361,7 @@ def test_random_updates(rng_ctor):
             (2,),
             "gengamma",
             lambda alpha, d, p: (alpha / p, p, 0, d),
+            None
         ),
     ],
 )
