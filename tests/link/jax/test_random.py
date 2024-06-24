@@ -2,11 +2,11 @@ import re
 
 import numpy as np
 import pytest
-import scipy.stats as stats
 
 import aesara
 import aesara.tensor as at
 import aesara.tensor.random as aer
+import scipy.stats as stats
 from aesara.compile.function import function
 from aesara.compile.sharedvalue import SharedVariable, shared
 from aesara.graph.basic import Constant
@@ -341,6 +341,26 @@ def test_random_updates(rng_ctor):
             "invgauss",
             lambda *args: args,
             None,
+        ),
+        (
+            aer.gengamma,
+            [
+                set_test_value(
+                    at.dvector(),
+                    np.array([1.0, 4.0], dtype=np.float64),
+                ),
+                set_test_value(
+                    at.dvector(),
+                    np.array([1.0, 2.0], dtype=np.float64),
+                ),
+                set_test_value(
+                    at.dvector(),
+                    np.array([2.0, 4.0], dtype=np.float64),
+                ),
+            ],
+            (2,),
+            "gengamma",
+            lambda alpha, d, p: (alpha / p, p, 0, d),
         ),
     ],
 )

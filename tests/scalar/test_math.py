@@ -1,7 +1,7 @@
 import numpy as np
-import scipy.special as sp
 
 import aesara.tensor as at
+import scipy.special as sp
 from aesara import function
 from aesara.compile.mode import Mode
 from aesara.graph.fg import FunctionGraph

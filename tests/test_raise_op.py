@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
-import scipy.sparse
 
 import aesara
 import aesara.tensor as at
+import scipy.sparse
 from aesara.compile.mode import OPT_FAST_RUN, Mode
 from aesara.graph.basic import Constant, equal_computations
 from aesara.raise_op import Assert, CheckAndRaise, assert_op

@@ -1,7 +1,6 @@
 import copy
 
 import scipy.sparse
-
 from aesara.compile import shared_constructor
 from aesara.sparse.basic import SparseTensorType, _sparse_py_operators
 from aesara.tensor.sharedvar import TensorSharedVariable

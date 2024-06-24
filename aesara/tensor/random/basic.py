@@ -2,9 +2,9 @@ import abc
 from typing import List, Optional, Union
 
 import numpy as np
-import scipy.stats as stats
 
 import aesara
+import scipy.stats as stats
 from aesara.tensor.basic import as_tensor_variable
 from aesara.tensor.random.op import RandomVariable, default_supp_shape_from_params
 from aesara.tensor.random.type import RandomGeneratorType, RandomStateType

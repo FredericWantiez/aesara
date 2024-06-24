@@ -3,9 +3,9 @@ import itertools
 
 import numpy as np
 import pytest
-import scipy
 
 import aesara
+import scipy
 from aesara import function, grad
 from aesara import tensor as at
 from aesara.configdefaults import config

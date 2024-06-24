@@ -2,12 +2,12 @@ import contextlib
 
 import numpy as np
 import pytest
-import scipy.special
 
 import aesara
 import aesara.tensor as at
 import aesara.tensor.inplace as ati
 import aesara.tensor.math as aem
+import scipy.special
 from aesara import config
 from aesara.compile.ops import deep_copy_op
 from aesara.compile.sharedvalue import SharedVariable

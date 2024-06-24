@@ -1,9 +1,5 @@
 import numpy as np
 import pytest
-from scipy.special import factorial as scipy_factorial
-from scipy.special import log_softmax as scipy_log_softmax
-from scipy.special import poch as scipy_poch
-from scipy.special import softmax as scipy_softmax
 
 from aesara.compile.function import function
 from aesara.configdefaults import config
@@ -17,6 +13,10 @@ from aesara.tensor.special import (
     softmax,
 )
 from aesara.tensor.type import matrix, tensor3, tensor4, vector, vectors
+from scipy.special import factorial as scipy_factorial
+from scipy.special import log_softmax as scipy_log_softmax
+from scipy.special import poch as scipy_poch
+from scipy.special import softmax as scipy_softmax
 from tests import unittest_tools as utt
 from tests.tensor.utils import random_ranged
 

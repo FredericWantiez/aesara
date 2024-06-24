@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
-import scipy.special
 
 import aesara
 import aesara.tensor as at
+import scipy.special
 from aesara.configdefaults import config
 from aesara.graph.fg import FunctionGraph
 from aesara.graph.op import get_test_value

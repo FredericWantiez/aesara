@@ -2,13 +2,13 @@ from contextlib import ExitStack
 
 import numpy as np
 import pytest
-from scipy.sparse.csr import csr_matrix
 
 import aesara
 import aesara.sparse as sparse
 import aesara.tensor as at
 from aesara.sparse.type import SparseTensorType
 from aesara.tensor.type import DenseTensorType
+from scipy.sparse.csr import csr_matrix
 
 
 class TestSparseVariable:

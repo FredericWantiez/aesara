@@ -2,10 +2,10 @@ from contextlib import ExitStack as does_not_raise
 
 import numpy as np
 import pytest
-import scipy.special as sp
 
 import aesara
 import aesara.tensor as at
+import scipy.special as sp
 from aesara.compile.mode import OPT_FAST_RUN, optdb
 from aesara.configdefaults import config
 from aesara.gradient import grad
