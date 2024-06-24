@@ -4,9 +4,9 @@ from copy import copy
 
 import numpy as np
 import pytest
-import scipy.stats as stats
 
 import aesara.tensor as at
+import scipy.stats as stats
 from aesara import function, shared
 from aesara.compile.mode import Mode
 from aesara.compile.sharedvalue import SharedVariable

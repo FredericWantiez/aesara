@@ -8,7 +8,6 @@ from itertools import product
 import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
-from scipy.special import logsumexp as scipy_logsumexp
 
 import aesara.scalar as aes
 from aesara.compile.debugmode import DebugMode
@@ -140,6 +139,7 @@ from aesara.tensor.type import (
     zvector,
 )
 from aesara.tensor.type_other import NoneConst
+from scipy.special import logsumexp as scipy_logsumexp
 from tests import unittest_tools as utt
 from tests.link.test_link import make_function
 from tests.tensor.utils import (

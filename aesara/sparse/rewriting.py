@@ -1,7 +1,6 @@
-import scipy
-
 import aesara
 import aesara.scalar as aes
+import scipy
 from aesara.configdefaults import config
 from aesara.graph.basic import Apply
 from aesara.graph.rewriting.basic import (

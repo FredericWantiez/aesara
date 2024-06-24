@@ -2,10 +2,10 @@ import contextlib
 
 import numpy as np
 import pytest
-import scipy.stats as stats
 
 import aesara.tensor as at
 import aesara.tensor.random.basic as aer
+import scipy.stats as stats
 from aesara import shared
 from aesara.compile.function import function
 from aesara.compile.sharedvalue import SharedVariable

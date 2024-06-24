@@ -8,8 +8,6 @@ from typing import TYPE_CHECKING, Callable, Optional, Union, cast
 import numba
 import numba.np.unsafe.ndarray as numba_ndarray
 import numpy as np
-import scipy
-import scipy.special
 from llvmlite.ir import FunctionType
 from numba import types
 from numba.core.decorators import _jit
@@ -17,6 +15,8 @@ from numba.core.errors import TypingError
 from numba.cpython.unsafe.tuple import tuple_setitem  # noqa: F401
 from numba.extending import box
 
+import scipy
+import scipy.special
 from aesara import config
 from aesara.compile.builders import OpFromGraph
 from aesara.compile.ops import DeepCopyOp

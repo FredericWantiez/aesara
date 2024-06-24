@@ -3,10 +3,10 @@ import warnings
 from typing import TYPE_CHECKING, Union
 
 import numpy as np
-import scipy.linalg
 from typing_extensions import Literal
 
 import aesara.tensor
+import scipy.linalg
 from aesara.graph.basic import Apply
 from aesara.graph.op import Op
 from aesara.tensor import as_tensor_variable

@@ -1,10 +1,10 @@
 import numba
 import numpy as np
 import pytest
-import scipy as sp
 
 # Make sure the Numba customizations are loaded
 import aesara.link.numba.dispatch.sparse  # noqa: F401
+import scipy as sp
 from aesara import config
 from aesara.sparse import Dot, SparseTensorType
 from tests.link.numba.test_basic import compare_numba_and_py

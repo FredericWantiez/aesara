@@ -3,9 +3,9 @@ from functools import reduce
 from typing import List
 
 import numpy as np
+
 import scipy
 import scipy.special
-
 from aesara import config
 from aesara.compile.ops import ViewOp
 from aesara.graph.basic import Variable
